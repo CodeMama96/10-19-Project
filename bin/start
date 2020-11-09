@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require_relative "../environment"
+
+# API.start
+
+cli_instance = CLI.new
+cli_instance.start
