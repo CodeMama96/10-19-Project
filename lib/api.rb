@@ -1,7 +1,7 @@
 class API
 
     def self.start
-        puts "What drink would you like today?"
+        puts "What makeup would you like to buy today?"
         input = gets.strip
         url = "http://makeup-api.herokuapp.com/api/v1/products.json"
 
@@ -10,7 +10,7 @@ class API
         array_of_makeup = hash["products"]
         array_of_makeup.each do |makeup|
                 # id, name, category, instructions
-                MakeUp.new(makeup["idDrink"], makeup["strDrink"], makeup["strCategory"], makeup["strInstructions"])
+                MakeUp.new(makeup["strName"], makeup["strBrand"], makeup["strPrice"], makeup["strProduct"])
         end
     end
 end

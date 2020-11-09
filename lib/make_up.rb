@@ -1,13 +1,13 @@
 class MakeUp
 
-    attr_accessor :id, :name, :category, :instructions
+    attr_accessor :name, :brand, :price, :product
 
     @@all = []
-    def initialize(id, name, category, instructions)
-        @id = id
+    def initialize(name, brand, price, product)
         @name = name
-        @category = category
-        @instructions = instructions
+        @brand = brand
+        @price = price
+        @product = product
 
         @@all << self
     end
