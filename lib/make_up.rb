@@ -1,4 +1,4 @@
-class Drink
+class MakeUp
 
     attr_accessor :id, :name, :category, :instructions
 
