@@ -1,3 +1,7 @@
+require 'pry'
+require 'net/http'
+require 'json'
+require_relative "../environment"
 
 class MakeUp
     attr_accessor :name, :product, :brand, :category, :description
@@ -26,7 +30,7 @@ class MakeUp
         self.all.each_with_index{|makeup, index| puts "#{index + 1}. #{makeup.name}"}
         binding.pry
     end
-    
+
     def self.display_makeup(index)
         makeup = self.all[index]
         puts "#{makeup.name} -- #{makeup.brand}"
@@ -42,8 +46,15 @@ class MakeUp
         if index == 0
             system("open #{makeup.url}")
         end
+        binding.pry
     end
+
+
+    # def display_makeup
+    #     MakeUp.topics.each_with_index{|brand, index| puts "#{index+1}. #{brand.capitalize}"}
+    # end
 
 
 end
 
+# puts "makeup"

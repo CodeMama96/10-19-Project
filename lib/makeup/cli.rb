@@ -4,11 +4,12 @@ require 'json'
 require_relative './makeup.rb'
 
 class CLI
+    makeup = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome"
         puts "Please choose the following product that you're interested in."
         self.display_makeup
-        index = self.initial_input
+        # index = self.initial_input
         # query = CLI.topics[index]
         api = API.new(query)
         api.create_makeup
@@ -23,6 +24,40 @@ class CLI
         input.to_i - 1
     end
 
+    def display_makeup
+        puts "Choose a product"
+        # makeup.sort
+        MakeUp.all.select do |makeup|
+            puts "I'd love to check out more, #{makeup}!"
+        end 
+        gets.strip
+        # puts "Choose a product"
+        # 1. "blush"
+        # 2. "bronzer"
+        # 3. "eyebrow"
+        # 4. "eyeliner"
+        # 5. "eyeshadow"
+        # 6. "foundation"
+        # 7. "lip liner"
+        # 8. "lip stick"
+        # 9. "mascara"
+        # 10. "nail polish"
+
+        def list_brand
+            "Here's are the brands!" 
+            "You choose this #{brand}!"
+            # option to look at description and price of each brand item
+            "Would you like to add it to your cart?"
+            if yes 
+                #add to cart
+            elsif no
+                #go back to brand
+            else
+                "That's not a valid answer."
+            end
+        end
+    end
+
     def more_makeup?
         puts "Would you like to try more makeup?"
         puts "1. Yes!"
@@ -34,32 +69,14 @@ class CLI
             MakeUp.clear_all
             self.start
         end
+        def list_cart
+            # list chosen items and total?
+        end
+
+
     end
 
-
- # puts "Are you interested in other products?"
-    # input = gets.strip.downcase
-    # if input == "y"
-    #   start
-    # elsif input == "n"
-    #   puts ""
-    #   puts "Thank you for shopping with us! Have a great day!"q
-
-    #   exit
-    # else
-    #   puts ""
-    #   puts "I don't understand that answer."
-    #   start
-    # end
-
-    def self.topics
-        @@topics
-    end
-
-    def display_makeup
-        Cli.topics.each_with_index{|brand, index| puts "#{index+1}. #{brand.capitalize}"}
-    end
 
 end
 
-CLI.display_makeup
+puts "CLI"

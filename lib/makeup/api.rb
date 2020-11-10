@@ -2,6 +2,7 @@ require 'pry'
 require 'net/http'
 require 'json'
 require_relative './makeup.rb'
+
 class API
     attr_accessor :query
 
@@ -23,8 +24,10 @@ class API
         self.fetch_makeup.each{|makeup| MakeUp.new(makeup["name"], makeup["product"], makeup["brand"], makeup["category"], makeup["description"]) }
         #binding.pry
     end
-    
 end
 
 # API.create_makeup
 
+# api = API.new("covergirl")
+# binding.pry
+puts "api"
