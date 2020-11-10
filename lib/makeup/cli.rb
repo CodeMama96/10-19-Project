@@ -2,6 +2,17 @@ class CLI
     def start
         puts "Welcome"
         puts "Please choose the following product that you're interested in."
+    #      _
+    #     | \
+    #     |  |
+    #     |  |
+    #     |  |
+    #    |~~~~|
+    #    |SSSS|
+    #    |    |  _______
+    #    |    | /     / \
+    #    |SSSS| \_____\_/
+    #    '----'
     end
     #if book.all.length == 0, call method and end
     # else use book.all method and print out
