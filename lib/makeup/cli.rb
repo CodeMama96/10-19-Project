@@ -2,16 +2,31 @@ require 'pry'
 
 class CLI
 
-    def welcome
+    def start
+        puts "\n"
         puts "Welcome to Foundation Finder!"
+        puts "\n"
         API.fetch_foundation
         self.menu
     end
 
     def menu
-        puts "Would you like to view the list of foundations?"
-        puts "Type 'yes' to continue or any other key to exit."
+        puts "Would you like to view the list of foundations? (type yes or no)"
+        puts "\n"
+        
         user_input = gets.strip.downcase
+        if user_input == "yes" || user_input == "y"
+            puts "Perfect!"
+            puts "\n"
+            display_foundation
+            ask_user_for_foundation_type
+            sleep(1)
+            menu
+        elsif user_input == 'search'
+            menu
+        else 
+            puts "Thank you for visiting!"
+        end
 
     end
 
