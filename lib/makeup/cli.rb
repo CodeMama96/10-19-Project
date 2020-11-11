@@ -4,19 +4,19 @@ require 'json'
 require_relative './makeup.rb'
 
 class CLI
-    makeup = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
+    @@product = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome"
         puts "Please choose the following product that you're interested in."
-        self.display_makeup
+        self.display_products
         # index = self.initial_input
         # query = CLI.topics[index]
         api = API.new(query)
         api.create_makeup
-        MakeUp.display_makeup
+        MakeUp.display_products
         index = self.secondary_input
 
-        MakeUp.display_makeup(index)
+        MakeUp.display_products(index)
         self.more_makeup?
     end
 

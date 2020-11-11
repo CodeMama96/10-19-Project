@@ -12,7 +12,7 @@ class API
 
     def self.fetch_makeup
 
-        url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=#{@query}"
+        url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=#ruby"
         uri = URI(url)
         response = Net::HTTP.get(uri)
         hash = JSON.parse(response)

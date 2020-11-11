@@ -25,36 +25,30 @@ class MakeUp
         @@all = []
     end
 
+
     def self.display_products
         puts "What type of product would you like?"
-        self.all.each_with_index{|makeup, index| puts "#{index + 1}. #{makeup.name}"}
-        binding.pry
+        self.all.each_with_index{|product, index| puts "#{index + 1}. #{product.product}"}
+
     end
+binding.pry
+    # def self.display_makeup(index)
+    #     makeup = self.all[index]
+    #     puts "#{makeup.name} -- #{makeup.brand}"
+    #     puts "#{makeup.description}"
 
-    def self.display_makeup(index)
-        makeup = self.all[index]
-        puts "#{makeup.name} -- #{makeup.brand}"
-        puts "#{makeup.description}"
-
-        puts "Would you like more information on this product?"
-        puts "1. Yes"
-        puts "2. No"
+    #     puts "Would you like more information on this product?"
+    #     puts "1. Yes"
+    #     puts "2. No"
     
-        input = gets.chomp
-        index = input.to_i - 1
+    #     input = gets.chomp
+    #     index = input.to_i - 1
     
-        if index == 0
-            system("open #{makeup.url}")
-        end
-        binding.pry
-    end
-
-
-    # def display_makeup
-    #     MakeUp.topics.each_with_index{|brand, index| puts "#{index+1}. #{brand.capitalize}"}
+    #     if index == 0
+    #         system("open #{makeup.url}")
+    #     end
+     
     # end
 
 
 end
-
-# puts "makeup"
