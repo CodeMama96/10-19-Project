@@ -1,17 +1,19 @@
 require 'pry'
 
 class CLI
-    #  @@product = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
+      @@products = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome To The Make-Up Shop!"
-        # API.fetch_makeup
+        API.fetch_makeup
         self.menu
     end
 
     def menu
         puts "Please choose the following products that you're interested in."
+        # print out the list of the products numbered
         user_input = gets.strip.downcase
-        display_makeup(user_input)
+        # reach into all the makeup objects and pick correct one
+        display_makeup(#the one I just picked out from objects)
         puts "Which brand do you like?"
         user_input = gets.strip.downcase
         if user_input == "yes" || user_input == "y"
@@ -20,9 +22,9 @@ class CLI
             
             # ask_user_for_brand_choice
             # sleep(1)
-            start
+            menu
         elsif user_input == 'search'
-            start
+            menu
         else
             # ask_user_for_brand_choice
             puts "Come again!"

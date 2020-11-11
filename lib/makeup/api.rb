@@ -1,16 +1,16 @@
 
 require 'pry'
 class API
-    attr_accessor :query
+    # attr_accessor :query
 
-    def initialize(query)
-        @query = query
-        create_makeup
-    end 
+    # def initialize(query)
+    #     @query = query
+    #     create_makeup
+    # end 
 
-    def fetch_makeup
+    def self.fetch_makeup
 
-        url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=#{@query}"
+        url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=foundation"
         # http://makeup-api.herokuapp.com/
         uri = URI(url)
         response = Net::HTTP.get(uri)
