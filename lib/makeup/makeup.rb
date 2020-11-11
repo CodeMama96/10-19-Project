@@ -3,7 +3,7 @@ class MakeUp
     attr_accessor :name, :product, :brand, :category, :description
     @@all = []
 
-    def initialize(name:, product:, brand:, category:, description:)
+    def initialize(name, product, brand, category, description)
         @name = name
         @product = product
         @brand = brand

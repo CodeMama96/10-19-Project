@@ -5,11 +5,13 @@ class API
 
     def initialize(query)
         @query = query
+        create_makeup
     end 
 
-    def self.fetch_makeup
+    def fetch_makeup
 
         url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=#{@query}"
+        # http://makeup-api.herokuapp.com/
         uri = URI(url)
         response = Net::HTTP.get(uri)
         hash = JSON.parse(response)
@@ -17,7 +19,7 @@ class API
     end
 
     def create_makeup
-        self.fetch_makeup.each{|makeup| MakeUp.new(makeup["name"], makeup["product"], makeup["brand"], makeup["category"], makeup["description"]) }
+        fetch_makeup.each{|makeup| MakeUp.new(makeup["name"], makeup["product"], makeup["brand"], makeup["category"], makeup["description"]) }
     end
 
 end
