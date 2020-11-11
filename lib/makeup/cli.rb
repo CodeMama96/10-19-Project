@@ -1,7 +1,7 @@
 require 'pry'
 
 class CLI
-      @@products = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
+    #   @@products = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome To The Make-Up Shop!"
         API.fetch_makeup
@@ -10,23 +10,22 @@ class CLI
 
     def menu
         puts "Please choose the following products that you're interested in."
-        # print out the list of the products numbered
-        user_input = gets.strip.downcase
+        # puts @@products
+        # user_input = gets.strip.downcase
         # reach into all the makeup objects and pick correct one
-        display_makeup(#the one I just picked out from objects)
-        puts "Which brand do you like?"
+        # display_makeup(user_input)#(the one I just picked out from objects)
+        # puts "Which brand do you like?"
         user_input = gets.strip.downcase
         if user_input == "yes" || user_input == "y"
             puts "I like your style!"
+            display_list_of_foundations
             display_makeup(user_input)
-            
-            # ask_user_for_brand_choice
             # sleep(1)
             menu
         elsif user_input == 'search'
             menu
         else
-            # ask_user_for_brand_choice
+           
             puts "Come again!"
         end
 
@@ -45,26 +44,20 @@ class CLI
     end
 
     def display_makeup_description(makeup)
-        # sleep(1)
+        sleep(1)
         puts "\n"
-        puts makeup.brand
+        puts makeup.foundation
         puts "\nProduct" + makeup.product
         puts "\nBrand" + makeup.brand
         puts "\nCategory" + makeup.category
         puts "\nDescription" + makeup.description
     end
 
-    def display_makeup(input)
-        makeup = API.new(input)
+    def display_makeup
+        # makeup = API.new
         MakeUp.all.each.with_index(1) do |product, index|
-        puts "#{index}. #{product.brand}"
+        puts "#{index}. #{product.foundation}"
         end
-    end
-
-    def list_cart
-        # array.save
-        # display.array
-        # list chosen items
     end
 
 end

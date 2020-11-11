@@ -1,25 +1,22 @@
 
 require 'pry'
 class API
-    # attr_accessor :query
 
-    # def initialize(query)
-    #     @query = query
-    #     create_makeup
-    # end 
-
-    def self.fetch_makeup
+    def self.fetch_foundation
 
         url = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=foundation"
-        # http://makeup-api.herokuapp.com/
         uri = URI(url)
         response = Net::HTTP.get(uri)
         hash = JSON.parse(response)
-        hash
+        
+
     end
 
-    def create_makeup
-        fetch_makeup.each{|makeup| MakeUp.new(makeup["name"], makeup["product"], makeup["brand"], makeup["category"], makeup["description"]) }
+    def self.create_foundation
+        fetch_foundation.each{|foundation| Foundation.new(foundation["name"], foundation["brand"], foundation["category"], foundation["description"]) }
+    binding.pry
     end
 
 end
+
+puts "api"
