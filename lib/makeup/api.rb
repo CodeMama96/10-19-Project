@@ -8,15 +8,9 @@ class API
         uri = URI(url)
         response = Net::HTTP.get(uri)
         hash = JSON.parse(response)
-        
-
+        hash.each do|foundation| 
+            foundation_instance = Foundation.new(foundation["name"], foundation["brand"], foundation["category"], foundation["description"])
+        end
     end
-
-    def self.create_foundation
-        fetch_foundation.each{|foundation| Foundation.new(foundation["name"], foundation["brand"], foundation["category"], foundation["description"]) }
-    binding.pry
-    end
-
 end
 
-puts "api"

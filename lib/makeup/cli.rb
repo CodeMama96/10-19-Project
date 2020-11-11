@@ -1,64 +1,43 @@
 require 'pry'
 
 class CLI
-    #   @@products = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
-    def start
-        puts "Welcome To The Make-Up Shop!"
-        API.fetch_makeup
+
+    def welcome
+        puts "Welcome to Foundation Finder!"
+        API.fetch_foundation
         self.menu
     end
 
     def menu
-        puts "Please choose the following products that you're interested in."
-        # puts @@products
-        # user_input = gets.strip.downcase
-        # reach into all the makeup objects and pick correct one
-        # display_makeup(user_input)#(the one I just picked out from objects)
-        # puts "Which brand do you like?"
+        puts "Would you like to view the list of foundations?"
+        puts "Type 'yes' to continue or any other key to exit."
         user_input = gets.strip.downcase
-        if user_input == "yes" || user_input == "y"
-            puts "I like your style!"
-            display_list_of_foundations
-            display_makeup(user_input)
-            # sleep(1)
-            menu
-        elsif user_input == 'search'
-            menu
-        else
-           
-            puts "Come again!"
-        end
 
     end
 
-    def ask_user_for_brand_choice
+    def ask_user_for_foundation_type
         index = gets.strip.to_i - 1
-        max_limit = MakeUp.all.length - 1
-        until index.between?(0,max_limit)
-            puts "This doesn't exist!"
-            index = (gets.strip.to_i) -1 
+        max_limit = Foundation.all.length - 1
+        until index.between?(0, max_limit)
+            puts "Sorry that is an invalid choice"
+            index = gets.strip.to_i - 1
         end
-        makeup_instance = MakeUp.all[index]
-        display_makeup_description(makeup_instance)
-
+        hash =  Foundation.all(index)
+        display_foundation_details(hash)
     end
 
-    def display_makeup_description(makeup)
+    def display_foundation_details(foundation)
         sleep(1)
         puts "\n"
-        puts makeup.foundation
-        puts "\nProduct" + makeup.product
-        puts "\nBrand" + makeup.brand
-        puts "\nCategory" + makeup.category
-        puts "\nDescription" + makeup.description
+        puts foundation.name
+        puts "\nBrand:" + foundation.brand
+        puts "\nCategory:" + foundation.category
+        puts "\nDescription:" + foundation.description 
     end
 
-    def display_makeup
-        # makeup = API.new
-        MakeUp.all.each.with_index(1) do |product, index|
-        puts "#{index}. #{product.foundation}"
+    def display_foundation 
+        Foundation.all.each.with_index(1) do |foundation, index|
+            puts "#{index}. #{foundation.name}"
         end
     end
-
 end
-
