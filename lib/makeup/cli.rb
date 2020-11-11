@@ -1,36 +1,57 @@
-require 'pry'
-require 'net/http'
-require 'json'
-require_relative './makeup.rb'
 
 class CLI
     @@product = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome"
-        puts "Please choose the following product that you're interested in."
-        self.display_products
-        # index = self.initial_input
-        # query = CLI.topics[index]
-        api = API.new(query)
-        api.create_makeup
-        MakeUp.display_products
-        index = self.secondary_input
-
-        MakeUp.display_products(index)
-        self.more_makeup?
+        API.fetch_makeup
+        self.menu
     end
 
-    def input_to_index(input)
-        input.to_i - 1
+    def menu
+        puts "Please choose the following product that you're interested in."
+        user_input = gets.strip.downcase
+        display_makeup
+        puts "Would you like more information?"
+        user_input = gets.strip.downcase
+        if user_input == "yes" || user_input == "y"
+            puts "I like your style!"
+            display_makeup
+            ask_user_for_makeup_choice
+            sleep(1)
+            menu
+        elsif user_input == 'search'
+            menu
+        else
+            puts "Come again!"
+        end
+
+    end
+
+    def ask_user_for_makeup_choice
+        index = gets.strip.to_i - 1
+        max_limit = MakeUp.all.length - 1
+        until index.between?(0,max_limit)
+            puts "That doesn't work!"
+            index = gets.strip.to_i -1
+        end
+        makeup_instance = MakeUp.all[index]
+        display_makeup_description(makeup_instance)
+
+    end
+
+    def display_makeup_description(makeup)
+        sleep(1)
+        puts "\n"
+        puts makeup.name
+        puts "\nProduct" + makeup.product
+        puts "\nBrand" + makeup.brand
+        puts "\nCategory" + makeup.category
+        puts "\nDescription" + makeup.description
     end
 
     def display_makeup
-        puts "Choose a product"
-        # makeup.sort
-        MakeUp.all.select do |makeup|
-            puts "I'd love to check out more, #{makeup}!"
-        end 
-        gets.strip
+      MakeUp.all.each.with_index(1) do |product, index|
+        puts "#{index}. #{makeup.product}"
         # puts "Choose a product"
         # 1. "blush"
         # 2. "bronzer"
@@ -42,40 +63,19 @@ class CLI
         # 8. "lip stick"
         # 9. "mascara"
         # 10. "nail polish"
-
-        def list_brand
-            "Here's are the brands!" 
-            "You choose this #{brand}!"
-            # option to look at description and price of each brand item
-            "Would you like to add it to your cart?"
-            if yes 
-                #add to cart
-            elsif no
-                #go back to brand
-            else
-                "That's not a valid answer."
-            end
         end
     end
 
-    def more_makeup?
-        puts "Would you like to try more makeup?"
-        puts "1. Yes!"
-        puts "2. No, maybe next time."
-        input = gets.chomp
-        index = input_to_index(input)
 
-        if index == 0
-            MakeUp.clear_all
-            self.start
-        end
-        def list_cart
-            # list chosen items and total?
-        end
-
-
+    def more?
+    
     end
 
+    def list_cart
+        # array.save
+        # display.array
+        # list chosen items
+    end
 
 end
 
