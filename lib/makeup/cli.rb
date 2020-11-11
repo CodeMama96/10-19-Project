@@ -1,13 +1,14 @@
+require 'pry'
 
 class CLI
-    @@product = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
+    #  @@product = ["blush", "bronzer", "eyebrow", "eyeliner", "eyeshadow", "foundation", "lip liner", "lip stick", "mascara", "nail polish"]
     def start
         puts "Welcome"
-        API.fetch_makeup
-        self.menu
-    end
+    #     API.fetch_makeupc
+    #     self.menu
+    # end
 
-    def menu
+    # def menu
         puts "Please choose the following product that you're interested in."
         user_input = gets.strip.downcase
         display_makeup
@@ -16,6 +17,7 @@ class CLI
         if user_input == "yes" || user_input == "y"
             puts "I like your style!"
             display_makeup
+            # display_brand
             ask_user_for_makeup_choice
             sleep(1)
             menu
@@ -31,7 +33,7 @@ class CLI
         index = gets.strip.to_i - 1
         max_limit = MakeUp.all.length - 1
         until index.between?(0,max_limit)
-            puts "That doesn't work!"
+            puts "This doesn't exist!"
             index = gets.strip.to_i -1
         end
         makeup_instance = MakeUp.all[index]
@@ -66,6 +68,9 @@ class CLI
         end
     end
 
+    def display_brand
+    end
+
 
     def more?
     
@@ -78,5 +83,3 @@ class CLI
     end
 
 end
-
-puts "CLI"
