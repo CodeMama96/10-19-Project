@@ -33,12 +33,11 @@ class CLI
     def ask_user_for_foundation_type
         index = gets.strip.to_i - 1
         max_limit = Foundation.all.length - 1
-        until index.between?(0, max_limit)
+        until index.between?(0,max_limit)
             puts "Sorry that is an invalid choice"
             index = gets.strip.to_i - 1
         end
-        hash =  Foundation.all(index)
-        display_foundation_details(hash)
+        display_foundation_details(Foundation.all[index])
     end
 
     def display_foundation_details(foundation)
@@ -48,6 +47,7 @@ class CLI
         puts "\nBrand:" + foundation.brand
         puts "\nCategory:" + foundation.category
         puts "\nDescription:" + foundation.description 
+        puts "\n"
     end
 
     def display_foundation 
