@@ -23,10 +23,13 @@ class CLI
             ask_user_for_foundation_type
             sleep(1)
             menu
-        elsif user_input == 'search'
-            menu
-        else 
+        elsif user_input == 'no' || user_input == "n"
+            puts "\n"
+            puts "Sorry, we couldn't accommadate you!"
+            sleep(2)
+            puts "\n"
             puts "Thank you for visiting!"
+            puts "\n"
         end
 
     end
