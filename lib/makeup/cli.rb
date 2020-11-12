@@ -4,7 +4,7 @@ class CLI
 
     def start
         puts "\n"
-        puts "Welcome to Foundation Finder!"
+        puts "~ Welcome to the Make-Up Foundation Finder! ~"
         puts "\n"
         API.fetch_foundation
         self.menu
@@ -17,6 +17,7 @@ class CLI
         user_input = gets.strip.downcase
         if user_input == "yes" || user_input == "y"
             puts "Perfect!"
+            puts "Choose which foundation you'd like more information on!"
             puts "\n"
             display_foundation
             ask_user_for_foundation_type
@@ -45,7 +46,6 @@ class CLI
         puts "\n"
         puts foundation.name
         puts "\nBrand:" + foundation.brand
-        puts "\nCategory:" + foundation.category
         puts "\nDescription:" + foundation.description 
         puts "\n"
     end

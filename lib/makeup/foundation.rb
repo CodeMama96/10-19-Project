@@ -1,10 +1,9 @@
 class Foundation
-    attr_accessor :name, :brand, :category, :description
+    attr_accessor :name, :brand, :description
     @@all = []
-    def initialize(name, brand, category, description)
+    def initialize(name, brand, description)
         @name = name
         @brand = brand
-        @category = category
         @description = description
         @@all << self
     end

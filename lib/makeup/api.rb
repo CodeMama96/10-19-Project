@@ -10,7 +10,7 @@ class API
         hash = JSON.parse(response)
        
         hash[1..20].each do|foundation| 
-            foundation_instance = Foundation.new(foundation["name"], foundation["brand"], foundation["category"], foundation["description"])
+            foundation_instance = Foundation.new(foundation["name"], foundation["brand"], foundation["description"])
         end
     end
 end
