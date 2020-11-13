@@ -13,22 +13,31 @@ class CLI
     def menu
         puts "Would you like to view the list of foundations? (type Yes or No)"
         puts "\n"
-        
+        input 
+    end
+
+    def recursion
+        puts "Would you like to view the list again? (Choose Yes or No)"
+        input
+    end
+
+    def input 
         user_input = gets.strip.downcase
         if user_input == "yes" || user_input == "y" || user_input == "Yes"
+            puts "\n"
             puts "Perfect!"
+            puts "\n"
             puts "Choose which foundation you'd like more information on!"
             puts "\n"
             display_foundation
             ask_user_for_foundation_type
             sleep(1)
-            menu
+            recursion 
         elsif user_input == 'no' || user_input == "n" || user_input == "No"
             puts "\n"
             puts "Here are the foundations you chose!"
-            # say this if there is a foundation inside of the 'cart'
+            puts "\n"
             puts @@arr
-            #other wise just say this 
             sleep(2)
             puts "\n"
             puts "Thank you for visiting!"
@@ -37,7 +46,7 @@ class CLI
             puts "Try Again!"
             menu
         end
-
+        
     end
 
     def ask_user_for_foundation_type
@@ -48,11 +57,8 @@ class CLI
             i = gets.strip.to_i - 1
         end
 
-        #return input
-
         foundation_instance = Foundation.all[i]
         display_foundation_details(foundation_instance)
-        # save_to_array(foundation_instance)
     end
 
     def display_foundation_details(foundation)
@@ -75,5 +81,6 @@ class CLI
     def save_to_array(foundation)
         @@arr << foundation.name.to_s
     end
+
 
 end
