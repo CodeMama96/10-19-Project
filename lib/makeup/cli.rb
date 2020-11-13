@@ -26,11 +26,16 @@ class CLI
         elsif user_input == 'no' || user_input == "n" || user_input == "No"
             puts "\n"
             puts "Here are the foundations you chose!"
-            # @@arr
+            # say this if there is a foundation inside of the 'cart'
+            puts @@arr
+            #other wise just say this 
             sleep(2)
             puts "\n"
             puts "Thank you for visiting!"
             puts "\n"
+        else 
+            puts "Try Again!"
+            menu
         end
 
     end
@@ -40,10 +45,13 @@ class CLI
         max_limit = Foundation.all.length - 1
         until i.between?(0,max_limit)
             puts "Sorry, choose another!"
-            gets.strip.to_i - 1
+            i = gets.strip.to_i - 1
         end
-        # foundation_instance = Foundation.all[i]
-        # display_foundation_details(foundation_instance)
+
+        #return input
+
+        foundation_instance = Foundation.all[i]
+        display_foundation_details(foundation_instance)
         # save_to_array(foundation_instance)
     end
 
@@ -54,6 +62,7 @@ class CLI
         puts "\nBrand:" + foundation.brand
         puts "\nDescription:" + foundation.description 
         puts "\n"
+        save_to_array(foundation)
     end
 
     def display_foundation 
@@ -62,18 +71,9 @@ class CLI
         end
     end
 
-    # def chosen_foundation
-    #     puts "Would you like to view the foundations you chose? (choose Yes or No)"
-    #     user_input= gets.strip.downcase
-    #     if user_input == "yes" || user_input == "y" || user_input == "Yes"
-    #         puts "Here are the Foundations that you have chosen!"
-    #         # @@arr
-    #     elsif user_input == 'no' || user_input == "n" || user_input == "No"
-    #         menu
-    #     end
-    # end
 
-    # def save_to_array(foundation)
-    #     @@arr << foundation.name.to_s
-    # end
+    def save_to_array(foundation)
+        @@arr << foundation.name.to_s
+    end
+
 end
