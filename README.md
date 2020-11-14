@@ -1,10 +1,10 @@
-# MakeUp
+# MakeUpFoundation
 
 
 
 # Installation
 
-# Running Test
+First step is to install the gemfiles by typing 'bundle install'. This will install any necessary gems that you will need. Once the gems are installed, you can run the program by typing 'Ruby bin/start' in the terminal. Lastly, you can go through the prompts that are listed.
 
 ## Development 
 
