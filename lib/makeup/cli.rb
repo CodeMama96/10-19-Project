@@ -3,17 +3,18 @@ require 'pry'
 class CLI
     @@arr = []
     def start
+        # API.fetch_foundation
         puts "\n"
         puts "~ Welcome to the Make-Up Foundation Finder! ~"
         puts "\n"
         API.fetch_foundation
-        self.menu
+        menu
     end
 
     def menu
         puts "Would you like to view the list of foundations? (type Yes or No)"
         puts "\n"
-        input 
+        input
     end
 
     def recursion
@@ -45,8 +46,7 @@ class CLI
         else 
             puts "Try Again!"
             menu
-        end
-        
+        end 
     end
 
     def ask_user_for_foundation_type
@@ -81,6 +81,16 @@ class CLI
     def save_to_array(foundation)
         @@arr << foundation.name.to_s
     end
+
+    # def first_response_is_no
+    #     if Foundation.empty?
+    #         puts "Come again!"
+    #     else 
+    #         puts "Here are the foundations you chose!"
+    #         puts @@arr
+    #         recursion
+    #     end
+    # end
 
 
 end
