@@ -3,11 +3,11 @@ require 'pry'
 class CLI
     @@arr = []
     def start
-        # API.fetch_foundation
+        API.fetch_foundation
         puts "\n"
         puts "~ Welcome to the Make-Up Foundation Finder! ~"
         puts "\n"
-        API.fetch_foundation
+        # API.fetch_foundation
         menu
     end
 
@@ -17,7 +17,7 @@ class CLI
         input
     end
 
-    def recursion
+    def tbc
         puts "Would you like to view the list again? (Choose Yes or No)"
         input
     end
@@ -33,19 +33,12 @@ class CLI
             display_foundation
             ask_user_for_foundation_type
             sleep(1)
-            recursion 
+            tbc
         elsif user_input == 'no' || user_input == "n" || user_input == "No"
-            puts "\n"
-            puts "Here are the foundations you chose!"
-            puts "\n"
-            puts @@arr
-            sleep(2)
-            puts "\n"
-            puts "Thank you for visiting!"
-            puts "\n"
+            goodbye
         else 
             puts "Try Again!"
-            menu
+            input
         end 
     end
 
@@ -82,15 +75,21 @@ class CLI
         @@arr << foundation.name.to_s
     end
 
-    # def first_response_is_no
-    #     if Foundation.empty?
-    #         puts "Come again!"
-    #     else 
-    #         puts "Here are the foundations you chose!"
-    #         puts @@arr
-    #         recursion
-    #     end
-    # end
-
-
+    def goodbye
+        if @@arr.empty?
+            puts "\n"
+            puts "Thanks for window shopping!"
+            puts "\n"
+        else
+            puts "\n"
+            puts "Here are the foundations you chose!"
+            puts "\n"
+            puts @@arr
+            sleep(2)
+            puts "\n"
+            puts "~ Thank you for visiting! ~"
+            puts "\n"
+        end
+    end
+    
 end
