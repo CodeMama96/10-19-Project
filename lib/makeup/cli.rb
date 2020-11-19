@@ -3,11 +3,10 @@ require 'pry'
 class CLI
     @@arr = []
     def start
-        API.fetch_foundation
+        API.fetch_foundation #also asked about this too, instance method calling on the class
         puts "\n"
         puts "~ Welcome to the Make-Up Foundation Finder! ~"
         puts "\n"
-        # API.fetch_foundation
         menu
     end
 
@@ -38,7 +37,7 @@ class CLI
             goodbye
         else 
             puts "Try Again!"
-            input
+            self.input
         end 
     end
 
@@ -49,10 +48,13 @@ class CLI
             puts "Sorry, choose another!"
             i = gets.strip.to_i - 1
         end
+      
 
         foundation_instance = Foundation.all[i]
         display_foundation_details(foundation_instance)
     end
+
+
 
     def display_foundation_details(foundation)
         sleep(1)

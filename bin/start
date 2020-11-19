@@ -1,6 +1,6 @@
-#! /usr/bin/env ruby
+#! /usr/bin/env ruby #telling the computer to use Ruby program
 
-require_relative "../lib/environment"
+require_relative "../lib/environment" #require_relative vs require
 
-CLI.new.start
+CLI.new.start #local method calling on an instance calling on a class method, .new is instaniation
 
