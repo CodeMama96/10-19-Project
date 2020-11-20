@@ -1,13 +1,12 @@
 require 'pry'
 
 class CLI
-    @@arr = []
+    
     def start
-        API.fetch_foundation
+        API.fetch_foundation #also asked about this too, instance method calling on the class
         puts "\n"
         puts "~ Welcome to the Make-Up Foundation Finder! ~"
         puts "\n"
-        # API.fetch_foundation
         menu
     end
 
@@ -38,7 +37,7 @@ class CLI
             goodbye
         else 
             puts "Try Again!"
-            input
+            self.input
         end 
     end
 
@@ -53,6 +52,8 @@ class CLI
         foundation_instance = Foundation.all[i]
         display_foundation_details(foundation_instance)
     end
+
+
 
     def display_foundation_details(foundation)
         sleep(1)
@@ -72,11 +73,11 @@ class CLI
 
 
     def save_to_array(foundation)
-        @@arr << foundation.name.to_s
+        Foundation.saved << foundation.name.to_s
     end
 
     def goodbye
-        if @@arr.empty?
+        if Foundation.saved.empty?
             puts "\n"
             puts "Thanks for window shopping!"
             puts "\n"
@@ -84,12 +85,12 @@ class CLI
             puts "\n"
             puts "Here are the foundations you chose!"
             puts "\n"
-            puts @@arr
+            puts Foundation.saved
             sleep(2)
             puts "\n"
             puts "~ Thank you for visiting! ~"
             puts "\n"
         end
     end
-    
+  
 end

@@ -1,6 +1,9 @@
 class Foundation
     attr_accessor :name, :brand, :description
-    @@all = []
+
+    @@all = [] 
+    @@saved = []
+
     def initialize(name, brand, description)
         @name = name
         @brand = brand
@@ -11,7 +14,10 @@ class Foundation
     def self.all
         @@all
     end
- 
- 
+
+    def self.saved
+        @@saved
+    end
+
  end
  
